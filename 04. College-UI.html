@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<script>
+function handleChange(checkbox) {
+    if(checkbox.checked == true){
+	var slider = document.getElementById("count1").innerHTML;
+	var output = document.getElementById("demo");
+	var x = parseInt(slider)+parseInt(output.innerHTML);
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}
+	if(checkbox.checked == false){
+	var slider = document.getElementById("count1").innerHTML;
+	var output = document.getElementById("demo").innerHTML;
+	var x = parseInt(output)-parseInt(slider);
+	var output = document.getElementById("demo");
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}}
+function handleChange1(checkbox) {
+    if(checkbox.checked == true){
+	var slider = document.getElementById("count2").innerHTML;
+	var output = document.getElementById("demo");
+	var x = parseInt(slider)+parseInt(output.innerHTML);
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}
+	if(checkbox.checked == false){
+	var slider = document.getElementById("count2").innerHTML;
+	var output = document.getElementById("demo").innerHTML;
+	var x = parseInt(output)-parseInt(slider);
+	var output = document.getElementById("demo");
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}}
+function handleChange2(checkbox) {
+    if(checkbox.checked == true){
+	var slider = document.getElementById("count3").innerHTML;
+	var output = document.getElementById("demo");
+	var x = parseInt(slider)+parseInt(output.innerHTML);
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}
+	if(checkbox.checked == false){
+	var slider = document.getElementById("count3").innerHTML;
+	var output = document.getElementById("demo").innerHTML;
+	var x = parseInt(output)-parseInt(slider);
+	var output = document.getElementById("demo");
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}}
+function handleChange3(checkbox) {
+    if(checkbox.checked == true){
+	var slider = document.getElementById("count4").innerHTML;
+	var output = document.getElementById("demo");
+	var x = parseInt(slider)+parseInt(output.innerHTML);
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}
+	if(checkbox.checked == false){
+	var slider = document.getElementById("count4").innerHTML;
+	var output = document.getElementById("demo").innerHTML;
+	var x = parseInt(output)-parseInt(slider);
+	var output = document.getElementById("demo");
+	output.innerHTML = x;
+	var slider1 = document.getElementById("myRange");
+	slider1.value=x;}}
+function calcTotal()
+{
+var a = document.getElementById("count1").innerHTML;
+var b = document.getElementById("count2").innerHTML;
+var c = document.getElementById("count3").innerHTML;
+var d = document.getElementById("count4").innerHTML;
+var e=parseInt(a)+parseInt(b)+parseInt(c)+parseInt(d);
+var x = document.getElementById("total")
+x.innerHTML = e;
+var slider1 = document.getElementById("myRange");
+slider.max = e;
+}
+</script>
+</head>
+<body onload="calcTotal()"> 
+<form method="POST">
+<div>Total <label id="total"></label></div>
+<input type="range" min="0" name="foo" value="0" id="myRange">
+<output for="foo" onforminput="value = foo.valueAsNumber;"></output>
+<span id="prev" hidden="hidden"></span>
+<p><span id="demo"></span></p>
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+	var a = document.getElementById("count1").innerHTML;
+	var b = document.getElementById("count2").innerHTML;
+	var c = document.getElementById("count3").innerHTML;
+	var d = document.getElementById("count4").innerHTML;
+	var temp=document.getElementById("prev");
+	if(parseInt(a) > slider.value)
+	{
+	document.getElementById("3c").checked= true;
+	var alloted = slider.value;
+	temp.innerHTML = slider.value;
+	}
+	else if(parseInt(b)+parseInt(a)>slider.value && parseInt(temp.innerHTML) < slider.value)
+	{
+	document.getElementById("2c").checked= true;
+	temp.innerHTML = slider.value;
+	}
+	else if(parseInt(b)+parseInt(a)+parseInt(c) > slider.value && parseInt(temp.innerHTML) < slider.value)
+	{
+	document.getElementById("1c").checked= true;
+	temp.innerHTML = slider.value;
+	}
+	else if(parseInt(b)+parseInt(a)+parseInt(c)+parseInt(d) > slider.value && parseInt(temp.innerHTML) < slider.value)
+	{
+	document.getElementById("sl").checked= true;
+	temp.innerHTML = slider.value;
+	}
+	else if(parseInt(a)+1 > slider.value  && parseInt(temp.innerHTML) > slider.value)
+	{
+	document.getElementById("2c").checked= false;
+	var alloted = slider.value;
+	temp.innerHTML = slider.value;
+	}	
+	else if(parseInt(b)+parseInt(a) > slider.value && parseInt(temp.innerHTML) > slider.value)
+	{
+	document.getElementById("1c").checked= false;
+	temp.innerHTML = slider.value;
+	}
+	else if(parseInt(b)+parseInt(a)+parseInt(c) > slider.value && parseInt(temp.innerHTML) > slider.value)
+	{
+	document.getElementById("sl").checked= false;
+	temp.innerHTML = slider.value;
+	}
+	
+	
+}
+</script>
+<input type="checkbox" id="3c" onchange='handleChange(this);'><label>3 seat</label>
+<div id="count1" value="12">12</div>
+<input type="checkbox" id="2c" onchange='handleChange1(this);'><label>2 seat</label>
+<div id="count2">8</div>
+<input type="checkbox" id="1c" onchange='handleChange2(this);'><label>1 seat</label>
+<div id="count3">24</div>
+<input type="checkbox" id="sl" onchange='handleChange3(this);'><label>sleeper</label>
+<div id="count4">4</div>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
